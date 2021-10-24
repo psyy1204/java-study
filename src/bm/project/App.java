@@ -1,6 +1,8 @@
 package bm.project;
 
 import bm.project.core.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class App{
@@ -13,5 +15,12 @@ public class App{
         for(Menu menu : menus){
             System.out.format("%4d.%S%5d\n",menu.No,menu.Name,menu.Price);
         }
+
+        List<OrderMenu> orderMenus = new ArrayList<>();
+        orderMenus.add(new OrderMenu(menus.get(0), 1));
+
+        restaurant.createOrder(orderMenus);
+
+        System.out.println(restaurant.getOrder(10));
     }
 }

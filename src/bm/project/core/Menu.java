@@ -10,4 +10,13 @@ public class Menu{
         this.Name = name;
         this.Price = Price;
     }
+
+    @Override
+    public java.lang.String toString() {
+        return "Menu{" +
+                "No=" + No +
+                ", Name='" + Name + '\'' +
+                ", Price=" + Price +
+                '}';
+    }
 }
