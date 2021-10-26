@@ -21,6 +21,6 @@ public class App{
 
         restaurant.createOrder(orderMenus);
 
-        System.out.println(restaurant.getOrder(10));
+        System.out.println(restaurant.getOrder(1));
     }
 }

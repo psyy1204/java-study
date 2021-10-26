@@ -23,8 +23,7 @@ public class Restaurant {
     }
 
     public Order createOrder(List<OrderMenu> orderMenus) {
-        Order order = new Order(1, orderMenus, "2021-10-24 10:32:00");
-
+        Order order = new Order(orderMenus);
         orderList.add(order);
 
         return order;
@@ -38,7 +37,8 @@ public class Restaurant {
                 order = orderList.get(i);
             }
         }
-
+        //간단하게 찾을수 있는 방법을 찾을것
         return order;
     }
+
 }
