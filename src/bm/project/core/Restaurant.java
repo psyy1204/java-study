@@ -1,11 +1,13 @@
 package bm.project.core;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Restaurant {
     static ArrayList<Menu> menuList = new ArrayList<>();
     static ArrayList<Order> orderList = new ArrayList<>();
+    static HashMap<Integer, Order> orderMap = new HashMap<Integer, Order>();
 
     public Restaurant() {
         setMenu();
@@ -22,22 +24,19 @@ public class Restaurant {
         return menuList;
     }
 
-    public Order createOrder(List<OrderMenu> orderMenus) {
+    public HashMap createOrder(List<OrderMenu> orderMenus){
         Order order = new Order(orderMenus);
         orderList.add(order);
 
-        return order;
+        for(int i = 0; i < orderList.size(); i++) {
+            orderMap.put(i + 1, orderList.get(i));
+        }
+        return orderMap;
     }
 
     public Order getOrder(int orderNo) {
-        Order order = new Order();
-
-        for (int i = 0; i < orderList.size(); i++) {
-            if (orderList.get(i).No == orderNo){
-                order = orderList.get(i);
-            }
-        }
-        //간단하게 찾을수 있는 방법을 찾을것
+        Order order = new Order( );
+        order = orderMap.get(orderNo);
         return order;
     }
 
