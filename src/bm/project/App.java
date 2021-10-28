@@ -16,8 +16,11 @@ public class App{
             System.out.format("%4d.%S%5d\n",menu.No,menu.Name,menu.Price);
         }
 
+        System.out.println();
+
         List<OrderMenu> orderMenus = new ArrayList<>();
         orderMenus.add(new OrderMenu(menus.get(0), 1));
+        orderMenus.add(new OrderMenu(menus.get(1), 1));
 
         restaurant.createOrder(orderMenus);
 

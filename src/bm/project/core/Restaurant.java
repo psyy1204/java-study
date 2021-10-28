@@ -6,8 +6,12 @@ import java.util.List;
 
 public class Restaurant {
     static ArrayList<Menu> menuList = new ArrayList<>();
-    static ArrayList<Order> orderList = new ArrayList<>();
-    static HashMap<Integer, Order> orderMap = new HashMap<Integer, Order>();
+    // 주문을 관리하는 자료형 변경
+    // ArrayList -> HashMap
+    // static ArrayList<Order> orderList = new ArrayList<>();
+    static HashMap<Integer, Order> orderMap = new HashMap<>();
+    // 주문번호 관리를 위한 변수 추가
+    static int orderNo = 1;
 
     public Restaurant() {
         setMenu();
@@ -24,20 +28,26 @@ public class Restaurant {
         return menuList;
     }
 
-    public HashMap createOrder(List<OrderMenu> orderMenus){
+    public Order createOrder(List<OrderMenu> orderMenus){
         Order order = new Order(orderMenus);
-        orderList.add(order);
+        orderMap.put(order.OrderNo, order);
 
-        for(int i = 0; i < orderList.size(); i++) {
-            orderMap.put(i + 1, orderList.get(i));
-        }
-        return orderMap;
+        // List를 loop 하면서 번호를 생성하게 되는 경우
+        // 매번 orderMap의 주문번호가 변경되게 됨
+        // for(int i = 0; i < orderList.size(); i++) {
+        //     orderMap.put(i + 1, orderList.get(i));
+        //}
+
+        return order;
     }
 
     public Order getOrder(int orderNo) {
-        Order order = new Order( );
-        order = orderMap.get(orderNo);
-        return order;
+        // Order order = new Order( );
+        // order = orderMap.get(orderNo);
+        // return order;
+
+        // orderMap에서 찾은 order를 바로 return
+        return orderMap.get(orderNo);
     }
 
 }
