@@ -29,5 +29,7 @@ public class App{
         System.out.println(restaurant.getRestaurantInfo("새마을식당"));
 
         restaurant.printInfo();
+
+        restaurant.completeOrder(1);
     }
 }

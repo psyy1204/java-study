@@ -37,7 +37,6 @@ public class Restaurant {
         return orderMap.get(orderNo);
     }
 
-
     public void setRestaurantInfo(){
         infoMap.put("새마을식당",new RestaurantInfo
                 ("수원시 무지개로1","123-4567","10:00","22:00"));
@@ -49,6 +48,11 @@ public class Restaurant {
             System.out.println(entrySet.getKey() + " : " +entrySet.getValue());
             //전체 목록을 얻고 싶을때
         }
+    }
+
+    public void completeOrder(int orderNo){
+        orderMap.remove(orderNo);
+        System.out.println("주문번호"+orderNo+" 완성되었습니다.");
     }
 
     public RestaurantInfo getRestaurantInfo(String Name){  return infoMap.get(Name); }
