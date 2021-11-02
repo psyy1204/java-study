@@ -1,5 +1,4 @@
 package bm.project;
-
 import bm.project.core.*;
 
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ public class App{
     public static void main(String[] args){
         Restaurant restaurant = new Restaurant();
         List<Menu> menus = restaurant.getMenu();
+
 
         System.out.println("새마을 식당 메뉴판");
 
@@ -25,5 +25,9 @@ public class App{
         restaurant.createOrder(orderMenus);
 
         System.out.println(restaurant.getOrder(1));
+
+        System.out.println(restaurant.getRestaurantInfo("새마을식당"));
+
+        restaurant.printInfo();
     }
 }
