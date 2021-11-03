@@ -1,4 +1,6 @@
-package bm.project.core;
+package bm.project.core.model;
+
+import bm.project.core.model.*;
 
 public class RestaurantInfo {
     public String Address;         //주소

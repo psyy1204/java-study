@@ -1,4 +1,4 @@
-package bm.project.core;
+package bm.project.core.model;
 
 public class Menu{
     public int No;

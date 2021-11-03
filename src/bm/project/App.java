@@ -1,5 +1,5 @@
 package bm.project;
-import bm.project.core.*;
+import bm.project.core.model.*;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package bm.project.core;
+package bm.project.core.model;
 
 import java.util.ArrayList;
 import java.util.List;
