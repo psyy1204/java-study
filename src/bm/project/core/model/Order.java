@@ -13,8 +13,8 @@ public class Order {
 
     public Order(){ OrderMenus =  new ArrayList<>(); }
 
-    public Order(List<OrderMenu> orderMenus) {
-        this.OrderNo = Restaurant.orderNo++;
+    public Order(List<OrderMenu> orderMenus, int orderNo) {
+        this.OrderNo = orderNo++;
         this.OrderMenus = orderMenus;
         LocalDateTime now = LocalDateTime.now();
         this.OrderDate = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
