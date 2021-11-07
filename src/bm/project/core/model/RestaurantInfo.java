@@ -6,12 +6,15 @@ public class RestaurantInfo {
     public String PhoneNumber;     //전화번호
     public Hours OpeningHours;
 
+    public RestaurantInfo(){
+
+    }
+
     public RestaurantInfo(String name, String address, String phoneNumber, String open, String close){
         this.Name = name;
         this.Address = address;
         this.PhoneNumber = phoneNumber;
-        Hours openingHours = new Hours(open,close);
-        this.OpeningHours = openingHours;
+        this.OpeningHours = new Hours(open,close);
     }
 
     @Override

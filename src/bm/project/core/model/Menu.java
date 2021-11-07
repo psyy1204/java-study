@@ -7,9 +7,9 @@ public class Menu{
     public String Name;
     public int Price;
 
-    public Menu(String name, int Price, ArrayList<Menu> menuList){    //생성자
-        this.No = menuList.size() + 1;
-        this.Name = name;
+    public Menu(int No, String Name, int Price){    //생성자
+        this.No = No;
+        this.Name = Name;
         this.Price = Price;
     }
 

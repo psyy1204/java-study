@@ -9,15 +9,16 @@ import java.time.format.DateTimeFormatter;
 public class Order {
     public int OrderNo;
     public List<OrderMenu> OrderMenus;
-    public String OrderDate;
+    public LocalDateTime OrderDate;
 
-    public Order(){ OrderMenus =  new ArrayList<>(); }
+    public Order(){
+        OrderMenus =  new ArrayList<>();
+    }
 
     public Order(List<OrderMenu> orderMenus, int orderNo) {
-        this.OrderNo = orderNo++;
+        this.OrderNo = orderNo;
         this.OrderMenus = orderMenus;
-        LocalDateTime now = LocalDateTime.now();
-        this.OrderDate = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+        this.OrderDate = LocalDateTime.now();
     }
 
     @Override
@@ -25,7 +26,7 @@ public class Order {
         return "Order{" +
                 "OrderMenus=" + OrderMenus.toString() +
                 // String 형태가 필요할 때 형식에 맞춰 출력되도록 수정
-                ", OrderDate='" + OrderDate + '\'' +
+                ", OrderDate='" + OrderDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + '\'' +
                 '}';
     }
 }
