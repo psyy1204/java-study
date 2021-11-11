@@ -60,6 +60,15 @@ public class Restaurant {
         return restaurantInfo;
     }
 
+    public Order changeOrder(int orderNo, List<OrderMenu> orderMenus, List<OrderMenu> chageMenu){
+        Order order = new Order();
+        orderMenus.remove(orderNo);
+        order = createOrder(chageMenu);
+        System.out.println("주문이 변경되었습니다.");
+        System.out.println("변경내역 : " + order);
+        return order;
+    }
+
     @Override
     public String toString() {
         return "Restaurant{" +

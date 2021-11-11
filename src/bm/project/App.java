@@ -58,6 +58,9 @@ public class App{
 
         System.out.println(hongkong.getOrder(1));
 
-        hongkong.completeOrder(1);
+        List<OrderMenu> changeMenu = new ArrayList<>();
+        changeMenu.add(new OrderMenu(HonkongMenus.get(2),2));
+        changeMenu.add(new OrderMenu(HonkongMenus.get(3),1));
+        hongkong.changeOrder(1,hokongOrderMenus,changeMenu);
     }
 }
