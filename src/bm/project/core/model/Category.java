@@ -3,11 +3,13 @@ package bm.project.core.model;
 import java.util.List;
 
 public class Category {
-    public String MenuCategory;
+    public int CategoryNo;
+    public String CategoryName;
     public List<Menu> MenuList;
 
-    public Category(String menuCategory, List<Menu> menuList){
-        this.MenuCategory = menuCategory;
+    public Category(int categoryNo, String categoryName, List<Menu> menuList){
+        this.CategoryNo = categoryNo;
+        this.CategoryName = categoryName;
         this.MenuList = menuList;
     }
 }

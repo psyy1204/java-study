@@ -11,22 +11,14 @@ import java.util.List;
 public class App{
     public static void main(String[] args) {
         Saemaul restaurant = new Saemaul(new RestaurantInfo("새마을식당","수원시 무지개로123","123-4567","10:00","22:00"));
+        restaurant.initialize();
 
-        ArrayList<Category> saemaulMenuList = new ArrayList<>();
-        saemaulMenuList = restaurant.setSaemaulMenu();
+        ArrayList<Category> saemaulMenuList = restaurant.getSaemaulMenu();
 
-        ArrayList<Menu> meatMenus = new ArrayList<>();
-        meatMenus = restaurant.setMeatMenus();
-        ArrayList<Menu> mealMenus = new ArrayList<>();
-        mealMenus = restaurant.setMealMenus();
+        restaurant.printMenu();
 
-        System.out.println("새마을 식당 메뉴판");
-
-        for (Category menu : saemaulMenuList) {
-            System.out.format("%S%S\n", menu.MenuCategory, menu.MenuList);
-        }
-
-        System.out.println();
+        ArrayList<Menu> meatMenus = restaurant.getMeatMenus();
+        ArrayList<Menu> mealMenus = restaurant.getMealMenus();
 
         List<OrderMenu> orderMenus = new ArrayList<>();
         orderMenus.add(new OrderMenu(meatMenus.get(0), 2));

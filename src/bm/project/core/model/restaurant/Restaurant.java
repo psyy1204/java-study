@@ -25,10 +25,8 @@ public class Restaurant {
         menuList = menus;
     }
 
-    public Category setMenuCategory(String menuCategory, ArrayList<Menu> menus){
-        menuList = menus;
-        Category category = new Category(menuCategory, menuList);
-        return category;
+    public Category setCategory(int categoryNo, String categoryName, ArrayList<Menu> menus){
+        return new Category(categoryNo, categoryName, menuList);
     }
 
     public List<Category> getMenu() {
@@ -60,12 +58,20 @@ public class Restaurant {
         return restaurantInfo;
     }
 
+    public void removeOrder(int orderNo){
+        orderMap.remove(orderNo);
+    }
+
     public Order changeOrder(int orderNo, List<OrderMenu> orderMenus, List<OrderMenu> chageMenu){
-        Order order = new Order();
+//        Order legacyOrder = orderMap.get(orderNo);
+//        legacyOrder.OrderMenus = orderMenus;
+
         orderMenus.remove(orderNo);
-        order = createOrder(chageMenu);
+        Order order = createOrder(chageMenu);
+
         System.out.println("주문이 변경되었습니다.");
         System.out.println("변경내역 : " + order);
+
         return order;
     }
 
