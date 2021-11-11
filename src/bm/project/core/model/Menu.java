@@ -7,7 +7,7 @@ public class Menu{
     public String Name;
     public int Price;
 
-    public Menu(int No, String Name, int Price){    //생성자
+    public Menu(int No, String Name, int Price){
         this.No = No;
         this.Name = Name;
         this.Price = Price;

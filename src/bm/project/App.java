@@ -1,35 +1,36 @@
 package bm.project;
 import bm.project.core.model.*;
+import bm.project.core.model.restaurant.Hongkong;
 import bm.project.core.model.restaurant.Restaurant;
 import bm.project.core.model.restaurant.Saemaul;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class App{
     public static void main(String[] args) {
         Saemaul restaurant = new Saemaul(new RestaurantInfo("새마을식당","수원시 무지개로123","123-4567","10:00","22:00"));
 
-        ArrayList<Menu> menuList = new ArrayList<>();
-        menuList.add(new Menu(menuList.size() + 1, "김치찌개", 5000));
-        menuList.add(new Menu(menuList.size() + 1, "된장찌개", 6000));
-        menuList.add(new Menu(menuList.size() + 1, "부대찌개", 7000));
-        menuList.add(new Menu(menuList.size() + 1, "고추장찌개", 5000));
-        restaurant.setMenu(menuList);
+        ArrayList<Category> saemaulMenuList = new ArrayList<>();
+        saemaulMenuList = restaurant.setSaemaulMenu();
 
-        List<Menu> menus = restaurant.getMenu();
+        ArrayList<Menu> meatMenus = new ArrayList<>();
+        meatMenus = restaurant.setMeatMenus();
+        ArrayList<Menu> mealMenus = new ArrayList<>();
+        mealMenus = restaurant.setMealMenus();
 
         System.out.println("새마을 식당 메뉴판");
 
-        for (Menu menu : menus) {
-            System.out.format("%4d.%S%5d\n", menu.No, menu.Name, menu.Price);
+        for (Category menu : saemaulMenuList) {
+            System.out.format("%S%S\n", menu.MenuCategory, menu.MenuList);
         }
 
         System.out.println();
 
         List<OrderMenu> orderMenus = new ArrayList<>();
-        orderMenus.add(new OrderMenu(menus.get(0), 1));
-        orderMenus.add(new OrderMenu(menus.get(1), 1));
+        orderMenus.add(new OrderMenu(meatMenus.get(0), 2));
+        orderMenus.add(new OrderMenu(mealMenus.get(1), 1));
 
         restaurant.createOrder(orderMenus);
 
@@ -37,36 +38,26 @@ public class App{
 
         restaurant.completeOrder(1);
 
-        Restaurant subway = new Restaurant();
-        subway.setRestaurantInfo(new RestaurantInfo("서브웨이","수원시 무지개로124","123-5678","07:00","20:00"));
-        ArrayList<Menu> subwayMenuList = new ArrayList<>();
-        subwayMenuList.add(new Menu(subwayMenuList.size() + 1, "참치샌드위치", 6000));
-        subwayMenuList.add(new Menu(subwayMenuList.size() + 1, "계란샌드위치", 5000));
-        subwayMenuList.add(new Menu(subwayMenuList.size() + 1, "야채샌드위치", 4500));
-        subwayMenuList.add(new Menu(subwayMenuList.size() + 1, "닭가슴살샌드위치", 5000));
+        Hongkong hongkong = new Hongkong(new RestaurantInfo("홍콩반점","수원시 무지개로124","123-5678","10:00","23:00"));
 
-        subway.setMenu(subwayMenuList);
+        List<Menu> HonkongMenus = hongkong.setHokongMenu();
 
-        List<Menu> subwayMenus = subway.getMenu();
+        System.out.println("홍콩반점 메뉴판");
 
-        System.out.println("서브웨이 메뉴판");
-
-        for (Menu menu : subwayMenus) {
-            System.out.format("%4d.%S%5d\n", menu.No, menu.Name, menu.Price);
+        for (Menu menu : HonkongMenus) {
+            System.out.format("%4d.%S %5d\n", menu.No, menu.Name, menu.Price);
         }
 
         System.out.println();
 
-        List<OrderMenu> subwayOrderMenus = new ArrayList<>();
-        subwayOrderMenus.add(new OrderMenu(subwayMenus.get(0), 1));
-        subwayOrderMenus.add(new OrderMenu(subwayMenus.get(1), 1));
+        List<OrderMenu> hokongOrderMenus = new ArrayList<>();
+        hokongOrderMenus.add(new OrderMenu(HonkongMenus.get(0), 1));
+        hokongOrderMenus.add(new OrderMenu(HonkongMenus.get(1), 1));
 
-        subway.createOrder(subwayOrderMenus);
+        hongkong.createOrder(hokongOrderMenus);
 
-        System.out.println(subway.getOrder(1));
+        System.out.println(hongkong.getOrder(1));
 
-        subway.completeOrder(1);
-
-        System.out.println(subway);
+        hongkong.completeOrder(1);
     }
 }

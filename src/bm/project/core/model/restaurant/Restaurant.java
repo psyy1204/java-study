@@ -1,9 +1,6 @@
 package bm.project.core.model.restaurant;
 
-import bm.project.core.model.Menu;
-import bm.project.core.model.Order;
-import bm.project.core.model.OrderMenu;
-import bm.project.core.model.RestaurantInfo;
+import bm.project.core.model.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,28 +10,32 @@ public class Restaurant {
     ArrayList<Menu> menuList = new ArrayList<>();
     HashMap<Integer, Order> orderMap = new HashMap<>();
     RestaurantInfo restaurantInfo = new RestaurantInfo();
+    ArrayList<Category> menuCategoryList = new ArrayList<>();
+
     int orderNo = 1;
 
-    public Restaurant() {
-
-    }
+    public Restaurant() { }
 
     public Restaurant(RestaurantInfo info, ArrayList<Menu> menus){
         menuList = menus;
         restaurantInfo = info;
     }
 
-    public void setMenu(ArrayList<Menu> menus) {   //해당 클래스에서만 접근이 가능
+    public void setMenu(ArrayList<Menu> menus) {
         menuList = menus;
     }
 
-    public List<Menu> getMenu() {
-        return menuList;
+    public Category setMenuCategory(String menuCategory, ArrayList<Menu> menus){
+        menuList = menus;
+        Category category = new Category(menuCategory, menuList);
+        return category;
     }
 
-    public void printMenu(){
-
+    public List<Category> getMenu() {
+        return menuCategoryList;
     }
+
+    public void printMenu(){ }
 
     public Order createOrder(List<OrderMenu> orderMenus){
         Order order = new Order(orderMenus, orderNo);

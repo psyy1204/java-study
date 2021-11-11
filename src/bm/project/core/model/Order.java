@@ -25,7 +25,6 @@ public class Order {
     public java.lang.String toString() {
         return "Order{" +
                 "OrderMenus=" + OrderMenus.toString() +
-                // String 형태가 필요할 때 형식에 맞춰 출력되도록 수정
                 ", OrderDate='" + OrderDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + '\'' +
                 '}';
     }
