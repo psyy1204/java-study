@@ -35,22 +35,25 @@ public class App{
         Hongkong hongkong = new Hongkong(new RestaurantInfo("홍콩반점","수원시 무지개로124","123-5678","10:00","23:00"));
 
         hongkong.initialize();
-        ArrayList<Menu> honkongMenus = hongkong.getHongkongMenus();
+        ArrayList<Menu> hongkongMenus = hongkong.getHongkongMenus();
 
         hongkong.printMenu();
 
-        List<OrderMenu> hokongOrderMenus = new ArrayList<>();
-        hokongOrderMenus.add(new OrderMenu(honkongMenus.get(0), 1));
-        hokongOrderMenus.add(new OrderMenu(honkongMenus.get(1), 1));
+        List<OrderMenu> hongkongOrderMenus = new ArrayList<>();
+        hongkongOrderMenus.add(new OrderMenu(hongkongMenus.get(0), 1));
+        hongkongOrderMenus.add(new OrderMenu(hongkongMenus.get(1), 2));
 
-        hongkong.createOrder(hokongOrderMenus);
+        hongkong.createOrder(hongkongOrderMenus);
 
         System.out.println(hongkong.getOrder(1));
 
-        List<OrderMenu> changeMenu = new ArrayList<>();
-        changeMenu.add(new OrderMenu(honkongMenus.get(2),2));
-        changeMenu.add(new OrderMenu(honkongMenus.get(3),1));
+//        List<OrderMenu> changeMenu = new ArrayList<>();
+//        changeMenu.add(new OrderMenu(hongkongMenus.get(2),2));
+//        changeMenu.add(new OrderMenu(hongkongMenus.get(3),1));
+//
+//        hongkong.changeOrder(1,changeMenu);
 
-        hongkong.changeOrder(1,hokongOrderMenus,changeMenu);
+        hongkong.setTable(1,hongkong.getOrder(1));
+        System.out.println(hongkong.getTable());
     }
 }

@@ -12,6 +12,8 @@ public class Restaurant {
     RestaurantInfo restaurantInfo = new RestaurantInfo();
     ArrayList<Category> menuCategoryList = new ArrayList<>();
     Category category = new Category();
+    ArrayList<Table> tables = new ArrayList<>();
+    Table table = new Table();
 
     int orderNo = 1;
 
@@ -27,7 +29,6 @@ public class Restaurant {
     }
 
     public void setCategory(int categoryNo, String categoryName, ArrayList<Menu> menus){
-        // 여기에서 menus를 넣어야 하는데 menuList를 넣어서 제대로 안들어감
         category = new Category(categoryNo, categoryName, menus);
     }
 
@@ -68,18 +69,26 @@ public class Restaurant {
         orderMap.remove(orderNo);
     }
 
-    public Order changeOrder(int orderNo, List<OrderMenu> orderMenus, List<OrderMenu> chageMenu){
-//        Order legacyOrder = orderMap.get(orderNo);
-//        legacyOrder.OrderMenus = orderMenus;
+    public Order changeOrder(int orderNo, List<OrderMenu> orderMenus/*, List<OrderMenu> chageMenu*/){
+        Order legacyOrder = orderMap.get(orderNo);
+        legacyOrder.OrderMenus = orderMenus;
 
-        orderMenus.remove(orderNo);
-        Order order = createOrder(chageMenu);
+//        orderMenus.remove(orderNo);
+//        Order order = createOrder(chageMenu);
 
         System.out.println("주문이 변경되었습니다.");
-        System.out.println("변경내역 : " + order);
+        System.out.println("변경내역 : " + legacyOrder.OrderMenus);
 
-        return order;
+        return legacyOrder;
     }
+
+    public void setTable(int tableNo, Order order){
+        List<Order> orders = new ArrayList<>();
+        orders.add(order);
+        table = new Table(tableNo, orders);
+    }
+
+    public Table getTable(){ return table; }
 
     @Override
     public String toString() {
