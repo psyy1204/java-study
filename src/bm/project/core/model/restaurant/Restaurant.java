@@ -27,7 +27,8 @@ public class Restaurant {
     }
 
     public void setCategory(int categoryNo, String categoryName, ArrayList<Menu> menus){
-        category = new Category(categoryNo, categoryName, menuList);
+        // 여기에서 menus를 넣어야 하는데 menuList를 넣어서 제대로 안들어감
+        category = new Category(categoryNo, categoryName, menus);
     }
 
     public Category getCategory(){
