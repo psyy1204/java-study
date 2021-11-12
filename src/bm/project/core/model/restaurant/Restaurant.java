@@ -11,6 +11,7 @@ public class Restaurant {
     HashMap<Integer, Order> orderMap = new HashMap<>();
     RestaurantInfo restaurantInfo = new RestaurantInfo();
     ArrayList<Category> menuCategoryList = new ArrayList<>();
+    Category category = new Category();
 
     int orderNo = 1;
 
@@ -25,8 +26,12 @@ public class Restaurant {
         menuList = menus;
     }
 
-    public Category setCategory(int categoryNo, String categoryName, ArrayList<Menu> menus){
-        return new Category(categoryNo, categoryName, menuList);
+    public void setCategory(int categoryNo, String categoryName, ArrayList<Menu> menus){
+        category = new Category(categoryNo, categoryName, menuList);
+    }
+
+    public Category getCategory(){
+        return category;
     }
 
     public List<Category> getMenu() {

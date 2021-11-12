@@ -7,9 +7,9 @@ import bm.project.core.model.RestaurantInfo;
 import java.util.ArrayList;
 
 public class Saemaul extends Restaurant {
-    ArrayList<Category> SaemaulMenuList = new ArrayList<>();
     ArrayList<Menu> MeatMenus = new ArrayList<>();
     ArrayList<Menu>  MealMenus = new ArrayList<>();
+    ArrayList<Category> SaemaulMenuList = new ArrayList<>();
 
     public Saemaul(){ }
 
@@ -28,8 +28,8 @@ public class Saemaul extends Restaurant {
         MeatMenus.add(new Menu(MeatMenus.size() + 1, "차돌박이", 18000));
         MeatMenus.add(new Menu(MeatMenus.size() + 1, "훈제막창", 9000));
         MeatMenus.add(new Menu(MeatMenus.size() + 1, "껍데기", 6000));
-
-        SaemaulMenuList.add(setCategory(1, "고기류", MeatMenus));
+        setCategory(1, "고기류", MeatMenus);
+        SaemaulMenuList.add(getCategory());
 
         MealMenus.add(new Menu(MealMenus.size() + 1, "7분돼지김치", 6000));
         MealMenus.add(new Menu(MealMenus.size() + 1, "얼큰김치찌개", 6000));
@@ -38,8 +38,8 @@ public class Saemaul extends Restaurant {
         MealMenus.add(new Menu(MealMenus.size() + 1, "멸치국수", 3000));
         MealMenus.add(new Menu(MealMenus.size() + 1, "계란찜", 3000));
         MealMenus.add(new Menu(MealMenus.size() + 1, "옛날도시락", 3000));
-
-        SaemaulMenuList.add(setCategory(2, "식사류", MealMenus));
+        setCategory(2, "식사류", MealMenus);
+        SaemaulMenuList.add(getCategory());
     }
 
     public void setMeatMenus(Menu menu){
@@ -79,10 +79,8 @@ public class Saemaul extends Restaurant {
             {
                 System.out.printf("%d.%d.%S : %d원%n", category.CategoryNo, menu.No, menu.Name, menu.Price);
             }
-
             System.out.println();
         }
-
         System.out.println();
     }
 }
