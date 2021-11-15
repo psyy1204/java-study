@@ -45,7 +45,15 @@ public class App{
 
         hongkong.createOrder(hongkongOrderMenus);
 
+        List<OrderMenu> hongkongOrderMenus2 = new ArrayList<>();
+        hongkongOrderMenus2.add(new OrderMenu(hongkongMenus.get(2),2));
+        hongkongOrderMenus2.add(new OrderMenu(hongkongMenus.get(0),1));
+        hongkongOrderMenus2.add(new OrderMenu(hongkongMenus.get(10),1));
+
+        hongkong.createOrder(hongkongOrderMenus2);
+
         System.out.println(hongkong.getOrder(1));
+        System.out.println(hongkong.getOrder(2));
 
 //        List<OrderMenu> changeMenu = new ArrayList<>();
 //        changeMenu.add(new OrderMenu(hongkongMenus.get(2),2));
@@ -54,6 +62,7 @@ public class App{
 //        hongkong.changeOrder(1,changeMenu);
 
         hongkong.setTable(1,hongkong.getOrder(1));
-        System.out.println(hongkong.getTable());
+        hongkong.setTable(1,hongkong.getOrder(2));
+        hongkong.printTableInfo();
     }
 }

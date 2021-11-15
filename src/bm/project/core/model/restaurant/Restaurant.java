@@ -9,6 +9,7 @@ import java.util.List;
 public class Restaurant {
     ArrayList<Menu> menuList = new ArrayList<>();
     HashMap<Integer, Order> orderMap = new HashMap<>();
+    ArrayList<Order> orders = new ArrayList<>();
     RestaurantInfo restaurantInfo = new RestaurantInfo();
     ArrayList<Category> menuCategoryList = new ArrayList<>();
     Category category = new Category();
@@ -40,11 +41,13 @@ public class Restaurant {
         return menuCategoryList;
     }
 
+
     public void printMenu(){ }
 
     public Order createOrder(List<OrderMenu> orderMenus){
         Order order = new Order(orderMenus, orderNo);
         orderMap.put(order.OrderNo, order);
+        orderNo++;
         return order;
     }
 
@@ -52,9 +55,14 @@ public class Restaurant {
         return orderMap.get(orderNo);
     }
 
+    public void addOrder(){}
+
     public void completeOrder(int orderNo) {
-        orderMap.remove(orderNo);
+        Order order = orderMap.get(orderNo);
+        order.Completed = true;
+        orderMap.put(orderNo, order);
         System.out.println("주문번호" + orderNo + " 완성되었습니다.");
+        System.out.println(orderMap.get(orderNo));
     }
 
     public void setRestaurantInfo(RestaurantInfo restaurantInfo){
@@ -86,10 +94,26 @@ public class Restaurant {
         List<Order> orders = new ArrayList<>();
         orders.add(order);
         table = new Table(tableNo, orders);
+        tables.add(table);
     }
 
     public Table getTable(){ return table; }
 
+    public void printTableInfo(){
+        int totalPrice = 0;
+        for(Table table : tables){
+            System.out.println("TableNo : " + table.TableNo);
+            System.out.println("주문내역");
+            for(Order order : table.Orders) {
+                System.out.println("No"+order.OrderNo);
+                for(OrderMenu orderMenu : order.OrderMenus) {
+                    System.out.println(orderMenu.Menu+" "+orderMenu.Count);
+                }
+                totalPrice += table.TotalPrice;
+            }
+        }
+        System.out.println("총 금액 : " + totalPrice);
+    }
     @Override
     public String toString() {
         return "Restaurant{" +

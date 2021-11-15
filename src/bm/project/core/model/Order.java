@@ -10,6 +10,7 @@ public class Order {
     public int OrderNo;
     public List<OrderMenu> OrderMenus;
     public LocalDateTime OrderDate;
+    public boolean Completed = false;
 
     public Order(){
         OrderMenus =  new ArrayList<>();
@@ -26,6 +27,7 @@ public class Order {
         return "Order{" +
                 "OrderMenus=" + OrderMenus.toString() +
                 ", OrderDate='" + OrderDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + '\'' +
+                "Completed=" + Completed +
                 '}';
     }
 }
