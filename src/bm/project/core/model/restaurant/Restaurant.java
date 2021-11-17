@@ -14,6 +14,7 @@ public class Restaurant {
     ArrayList<Category> menuCategoryList = new ArrayList<>();
     Category category = new Category();
     HashMap<Integer,Table> tableMap = new HashMap<>();
+
     Table table = new Table();
 
     int orderNo = 1;
@@ -93,13 +94,21 @@ public class Restaurant {
         List<Order> orders = new ArrayList<>();
         orders.add(order);
         table = new Table(tableNo, orders);
-        tableMap.put(tableNo,table);
+        if(tableMap.size() >= 10) System.out.println("테이블이 가득 찼습니다.");
+        else tableMap.put(tableNo,table);
+        System.out.println("남은 테이블 수 : " + (10-tableMap.size()));
     }
 
-    public void addTableMenu(int tableNo, Order order) {
+    public void addTableOrder(int tableNo, Order order) {
         Table table = tableMap.get(tableNo);
         table.Orders.add(order);
         tableMap.put(tableNo,table);
+    }
+
+    public void removeTableOrder(int tableNo, int orderNo){
+        Table table = tableMap.get(tableNo);
+        System.out.println("테이블 No"+tableNo+"의 주문 "+table.Orders.get(orderNo)+"가 취소되었습니다.");
+        table.Orders.remove(orderNo);
     }
 
     public Table getTable(){ return table; }

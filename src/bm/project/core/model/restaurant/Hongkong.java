@@ -42,7 +42,7 @@ public class Hongkong extends Restaurant{
     public void printMenu(){
         super.printMenu();
 
-        System.out.println("홍콩반점 메뉴판판");
+        System.out.println("홍콩반점 메뉴판");
 
         for(Menu menu : HongkongMenus){
             System.out.format("%d %S %d\n",menu.No,menu.Name,menu.Price);

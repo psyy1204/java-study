@@ -27,9 +27,16 @@ public class App{
 
         saemaul.createOrder(orderMenus);
 
-        System.out.println(saemaul.getOrder(1));
+        List<OrderMenu> orderMenus2 = new ArrayList<>();
+        orderMenus2.add(new OrderMenu(meatMenus.get(1),3));
+        orderMenus2.add(new OrderMenu(mealMenus.get(3),1));
 
+        saemaul.createOrder(orderMenus2);
+
+        saemaul.setTable(1,saemaul.getOrder(1));
         saemaul.completeOrder(1);
+        saemaul.addTableOrder(1,saemaul.getOrder(2));
+        saemaul.printTableInfo(1);
 
         //홍콩반점
         Hongkong hongkong = new Hongkong(new RestaurantInfo("홍콩반점","수원시 무지개로124","123-5678","10:00","23:00"));
@@ -61,10 +68,12 @@ public class App{
 //
 //        hongkong.changeOrder(1,changeMenu);
 
-        hongkong.setTable(1,hongkong.getOrder(1));
-        hongkong.addTableMenu(1,hongkong.getOrder(2));
-        hongkong.completeOrder(1);
-
-        hongkong.printTableInfo(1);
+//        hongkong.setTable(1,hongkong.getOrder(1));
+//        hongkong.addTableOrder(1,hongkong.getOrder(2));
+//        hongkong.printTableInfo(1);
+//
+//        hongkong.completeOrder(1);
+//        hongkong.removeTableOrder(1,1);
+//        hongkong.printTableInfo(1);
     }
 }
