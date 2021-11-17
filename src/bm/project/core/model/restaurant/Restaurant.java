@@ -2,6 +2,7 @@ package bm.project.core.model.restaurant;
 
 import bm.project.core.model.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,11 +10,10 @@ import java.util.List;
 public class Restaurant {
     ArrayList<Menu> menuList = new ArrayList<>();
     HashMap<Integer, Order> orderMap = new HashMap<>();
-    ArrayList<Order> orders = new ArrayList<>();
     RestaurantInfo restaurantInfo = new RestaurantInfo();
     ArrayList<Category> menuCategoryList = new ArrayList<>();
     Category category = new Category();
-    ArrayList<Table> tables = new ArrayList<>();
+    HashMap<Integer,Table> tableMap = new HashMap<>();
     Table table = new Table();
 
     int orderNo = 1;
@@ -94,22 +94,31 @@ public class Restaurant {
         List<Order> orders = new ArrayList<>();
         orders.add(order);
         table = new Table(tableNo, orders);
-        tables.add(table);
+        tableMap.put(tableNo,table);
+    }
+
+    public void addTableMenu(int tableNo, Order order) {
+        Table table = tableMap.get(tableNo);
+        table.Orders.add(order);
+        tableMap.put(tableNo,table);
     }
 
     public Table getTable(){ return table; }
 
-    public void printTableInfo(){
+    public void printTableInfo(int tableNo){
         int totalPrice = 0;
-        for(Table table : tables){
-            System.out.println("TableNo : " + table.TableNo);
-            System.out.println("주문내역");
-            for(Order order : table.Orders) {
-                System.out.println("No"+order.OrderNo);
-                for(OrderMenu orderMenu : order.OrderMenus) {
-                    System.out.println(orderMenu.Menu+" "+orderMenu.Count);
-                }
-                totalPrice += table.TotalPrice;
+        Table table = tableMap.get(tableNo);
+
+        System.out.println("TableNo : " + tableNo);
+        System.out.println("주문내역");
+        for(Order order : table.Orders) {
+            System.out.print("No"+order.OrderNo);
+            if(order.Completed == false) System.out.println(" 미완료");
+            else System.out.println(" 완료");
+            System.out.println("주문시간 : "+ order.OrderDate.format(DateTimeFormatter.ofPattern("yy년 MM월 dd일 HH:mm:ss")));
+            for(OrderMenu orderMenu : order.OrderMenus) {
+                System.out.println(orderMenu.Menu+" "+orderMenu.Count);
+                totalPrice += orderMenu.MenuPrice;
             }
         }
         System.out.println("총 금액 : " + totalPrice);

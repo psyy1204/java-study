@@ -62,7 +62,9 @@ public class App{
 //        hongkong.changeOrder(1,changeMenu);
 
         hongkong.setTable(1,hongkong.getOrder(1));
-        hongkong.setTable(1,hongkong.getOrder(2));
-        hongkong.printTableInfo();
+        hongkong.addTableMenu(1,hongkong.getOrder(2));
+        hongkong.completeOrder(1);
+
+        hongkong.printTableInfo(1);
     }
 }
