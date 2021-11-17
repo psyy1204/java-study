@@ -41,7 +41,6 @@ public class Restaurant {
         return menuCategoryList;
     }
 
-
     public void printMenu(){ }
 
     public Order createOrder(List<OrderMenu> orderMenus){
